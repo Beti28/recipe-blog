@@ -1,0 +1,17 @@
+{
+  "users": [],
+  "recipes": [
+    {
+      "id": "1",
+      "title": "Пица Маргарита",
+      "description": "Класическа италианска пица с доматен сос, моцарела и пресен босилек.",
+      "image": "https://images.pexels.com/photos/17536352/pexels-photo-17536352.jpeg"
+    },
+    {
+      "id": "2",
+      "title": "Шоколадово брауни",
+      "description": "Лесно и бързо брауни с богат шоколадов вкус и мека сърцевина.",
+      "image": "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg"
+    }
+  ]
+}
