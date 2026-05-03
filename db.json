@@ -1,5 +1,18 @@
 {
-  "users": [],
+  "users": [
+    {
+      "username": "Admin",
+      "email": "admin@admin.com",
+      "password": "Admin123",
+      "id": "p8F2pCqYucM"
+    },
+    {
+      "username": "Beti28",
+      "email": "b.v.i@mail.bg",
+      "password": "123456",
+      "id": "B9Yd3ie-5tE"
+    }
+  ],
   "recipes": [
     {
       "id": "1",

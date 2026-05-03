@@ -9,10 +9,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Навигацията ще се показва на всяка страница */}
         <Navbar />
         
-        {/* Тук се зарежда различно съдържание според линка */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
