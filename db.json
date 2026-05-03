@@ -11,6 +11,18 @@
       "email": "b.v.i@mail.bg",
       "password": "123456",
       "id": "B9Yd3ie-5tE"
+    },
+    {
+      "username": "193knz",
+      "email": "193knz@unibit.bg",
+      "password": "1234",
+      "id": "ujgkW0m3TS0"
+    },
+    {
+      "username": "193knz",
+      "email": "193knz@unibit.bg",
+      "password": "123456",
+      "id": "UzPzZttDk3o"
     }
   ],
   "recipes": [
@@ -26,5 +38,6 @@
       "description": "Лесно и бързо брауни с богат шоколадов вкус и мека сърцевина.",
       "image": "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

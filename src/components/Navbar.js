@@ -2,8 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate();
-  
-  const user = JSON.parse(localStorage.getItem('user'));
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -11,27 +11,25 @@ function Navbar() {
   };
 
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px', backgroundColor: '#f4f4f4', alignItems: 'center' }}>
-      <h2 style={{ margin: 0 }}>Recipe Blog</h2>
+    <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px', backgroundColor: '#f8f9fa', borderBottom: '1px solid #ddd', alignItems: 'center' }}>
+
+      <Link to="/" style={{ textDecoration: 'none', color: '#333' }}>
+        <h1 style={{ margin: 0 }}>Recipe Blog</h1>
+      </Link>
       
       <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-        <Link to="/">Начало</Link>
-
-        {!user ? (
+        
+        {user ? (
           <>
-            <Link to="/login">Вход</Link>
-            <Link to="/register">Регистрация</Link>
+            <Link to="/add-recipe" style={{ textDecoration: 'none', color: '#28a745', fontWeight: 'bold' }}>+ Добави рецепта</Link>
+            <span style={{ color: '#666' }}>Здравей, {user.username}!</span>
+            <button onClick={handleLogout} style={{ border: 'none', background: 'none', color: 'red', cursor: 'pointer', fontSize: '16px' }}>Изход</button>
           </>
         ) : (
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-            <span style={{ fontWeight: 'bold', color: '#555' }}>Здравей, {user.username}!</span>
-            <button 
-              onClick={handleLogout} 
-              style={{ padding: '5px 10px', cursor: 'pointer', border: '1px solid #333', borderRadius: '4px' }}
-            >
-              Изход
-            </button>
-          </div>
+          <>
+            <Link to="/login" style={{ textDecoration: 'none', color: '#333' }}>Вход</Link>
+            <Link to="/register" style={{ textDecoration: 'none', color: '#333' }}>Регистрация</Link>
+          </>
         )}
       </div>
     </nav>
