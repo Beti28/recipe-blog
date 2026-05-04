@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px', backgroundColor: '#f8f9fa', borderBottom: '1px solid #ddd', alignItems: 'center' }}>
-
+      
       <Link to="/" style={{ textDecoration: 'none', color: '#333' }}>
         <h1 style={{ margin: 0 }}>Recipe Blog</h1>
       </Link>

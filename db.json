@@ -37,6 +37,14 @@
       "title": "Шоколадово брауни",
       "description": "Лесно и бързо брауни с богат шоколадов вкус и мека сърцевина.",
       "image": "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg"
+    },
+    {
+      "title": "Тирамису",
+      "description": "Вкусно тирамису с маскарпоне и бишкоти.",
+      "image": "https://images.pexels.com/photos/35059214/pexels-photo-35059214.jpeg",
+      "authorId": "p8F2pCqYucM",
+      "authorName": "Admin",
+      "id": "15yk0Z6Fifc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

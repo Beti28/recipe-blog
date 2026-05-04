@@ -1,37 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
 
-
   useEffect(() => {
     fetch('http://localhost:8000/recipes')
-      .then(response => response.json())
-      .then(data => setRecipes(data)) 
-      .catch(error => console.error('Грешка при зареждане:', error));
+      .then(res => res.json())
+      .then(data => setRecipes(data))
+      .catch(err => console.error("Грешка при зареждане:", err));
   }, []);
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Нашите Рецепти</h2>
+      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Всички Рецепти</h2>
       
-      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+        gap: '20px',
+        maxWidth: '1200px',
+        margin: '0 auto' 
+      }}>
         {recipes.map(recipe => (
-          <Link to={`/recipe/${recipe.id}`} key={recipe.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '8px', width: '300px', cursor: 'pointer' }}>
-              <h3>{recipe.title}</h3>
-              <img 
-                src={recipe.image} 
-                alt={recipe.title} 
-                style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }} 
-              />
-              <p>{recipe.description}</p>
+          <div key={recipe.id} style={{ 
+            border: '1px solid #eee', 
+            borderRadius: '10px', 
+            overflow: 'hidden', 
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            <img 
+              src={recipe.image} 
+              alt={recipe.title} 
+              style={{ width: '100%', height: '200px', objectFit: 'cover' }} 
+            />
+            <div style={{ padding: '15px' }}>
+              <h3 style={{ margin: '0 0 10px 0' }}>{recipe.title}</h3>
+              <p style={{ color: '#666', fontSize: '14px', height: '60px', overflow: 'hidden' }}>
+                {recipe.description.substring(0, 100)}...
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
+                <span style={{ fontSize: '12px', color: '#999' }}>от {recipe.authorName || 'Анонимен'}</span>
+                <Link 
+                  to={`/recipes/${recipe.id}`} 
+                  style={{ 
+                    textDecoration: 'none', 
+                    color: '#007bff', 
+                    fontWeight: 'bold',
+                    fontSize: '14px' 
+                  }}
+                >
+                  Виж повече →
+                </Link>
+              </div>
             </div>
-          </Link>
+          </div>
         ))}
-
       </div>
     </div>
   );
