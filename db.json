@@ -27,10 +27,10 @@
   ],
   "recipes": [
     {
-      "id": "1",
-      "title": "Пица Маргарита",
+      "title": "пица Маргарита",
+      "image": "https://images.pexels.com/photos/17536352/pexels-photo-17536352.jpeg",
       "description": "Класическа италианска пица с доматен сос, моцарела и пресен босилек.",
-      "image": "https://images.pexels.com/photos/17536352/pexels-photo-17536352.jpeg"
+      "id": "1"
     },
     {
       "id": "2",
@@ -44,8 +44,7 @@
       "image": "https://images.pexels.com/photos/35059214/pexels-photo-35059214.jpeg",
       "authorId": "p8F2pCqYucM",
       "authorName": "Admin",
-      "id": "15yk0Z6Fifc"
+      "id": "dy91J82bPis"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
