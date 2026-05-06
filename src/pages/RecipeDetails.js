@@ -38,69 +38,123 @@ function RecipeDetails() {
   const isAuthor = currentUser === recipe.authorName;
 
   return (
-    <div style={{ maxWidth: '800px', margin: '20px auto', padding: '30px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
-      <Link to="/" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>&larr; Назад към рецептите</Link>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px', 
+      boxSizing: 'border-box',
+      fontFamily: "'Segoe UI', Roboto, sans-serif"
+    }}>
+      
+      <div style={{ 
+        maxWidth: '900px', 
+        width: '100%',
+        backgroundColor: '#fffdfa',
+        borderRadius: '30px', 
+        boxShadow: '0 20px 40px rgba(0,0,0,0.05)', 
+        padding: '40px',
+        border: '1px solid #f2e9e1',
+        marginTop: '20px', 
+        marginBottom: '20px'
+      }}>
+        
+        <div style={{ textAlign: 'left', marginBottom: '25px' }}>
+          <Link to="/" style={{ 
+            textDecoration: 'none', 
+            color: '#636e72', 
+            fontSize: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px'
+          }}>
+            <span style={{ fontSize: '20px' }}>&larr;</span> Обратно към всички рецепти
+          </Link>
+        </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }}>
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            style={{ 
+              width: '100%', 
+              height: '380px', 
+              objectFit: 'cover', 
+              borderRadius: '25px',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.08)'
+            }}
+          />
 
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '15px' }}
-        />
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '10px', marginTop: '0' }}>{recipe.title}</h2>
-          <p style={{ color: '#636e72', marginBottom: '20px', flexGrow: 1 }}>{recipe.description}</p>
-
-          <div style={{ fontSize: '14px', marginBottom: '20px' }}>
-            Автор: <span style={{ color: '#ff6b6b', fontWeight: 'bold' }}>
-              {recipe.authorName || recipe.author || "Анонимен"}
-            </span>
-          </div>
-
-          {isAuthor ? (
-            <div style={{
-              display: 'flex',
-              gap: '10px',
-              justifyContent: 'center', 
-              marginTop: '20px'        
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            textAlign: 'center', 
+            alignItems: 'center' 
+          }}>
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              color: '#2d3436', 
+              marginBottom: '20px', 
+              marginTop: '0', 
+              fontWeight: '700' 
             }}>
-              <Link to={`/edit/${recipe.id}`} style={{
-                padding: '10px 20px',
-                backgroundColor: '#f39c12',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '8px',
-                fontWeight: 'bold'
-              }}>
-                Редактирай
-              </Link>
-              <button onClick={handleDelete} style={{
-                padding: '10px 20px',
-                backgroundColor: '#e74c3c',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontWeight: 'bold'
-              }}>
-                Изтрий
-              </button>
-            </div>
-          ) : (
+              {recipe.title}
+            </h2>
 
-            <p style={{
-              fontStyle: 'italic',
-              color: '#b2bec3',
-              fontSize: '12px',
-              textAlign: 'center', 
-              margin: 0
-            }}>
-              (Само авторът може да редактира тази рецепта)
+            <p style={{ color: '#636e72', marginBottom: '30px', lineHeight: '1.7', fontSize: '1.05rem' }}>
+              {recipe.description}
             </p>
-          )}
 
+            <div style={{ 
+              fontSize: '14px', 
+              marginBottom: '35px',
+              padding: '10px 18px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '12px',
+            }}>
+              <span style={{ color: '#b2bec3' }}>Приготвено от:</span> 
+              <span style={{ color: '#2d3436', fontWeight: 'bold', marginLeft: '5px' }}>
+                {recipe.authorName || recipe.author || "Анонимен"}
+              </span>
+            </div>
+
+            {isAuthor ? (
+              <div style={{ 
+                display: 'flex', 
+                gap: '15px',
+                justifyContent: 'center',
+                width: '100%' 
+              }}>
+                <Link to={`/edit/${recipe.id}`} style={{
+                  padding: '12px 25px',
+                  backgroundColor: '#2d3436',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '12px',
+                  fontWeight: '600'
+                }}>
+                  Редактирай
+                </Link>
+                <button onClick={handleDelete} style={{
+                  padding: '12px 25px',
+                  backgroundColor: '#fff',
+                  color: '#ff6b6b',
+                  border: '2px solid #ff6b6b',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  fontWeight: '600'
+                }}>
+                  Изтрий
+                </button>
+              </div>
+            ) : (
+              <p style={{ fontStyle: 'italic', color: '#b2bec3', fontSize: '13px', margin: 0 }}>
+                Вие разглеждате тази рецепта като гост.
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

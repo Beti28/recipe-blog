@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 function Register() {
   const formik = useFormik({
@@ -35,72 +36,101 @@ function Register() {
     },
   });
 
+  const inputStyle = {
+    padding: '15px 20px',
+    fontSize: '16px',
+    width: '100%',
+    boxSizing: 'border-box',
+    borderRadius: '15px',
+    border: '1px solid #eee',
+    backgroundColor: '#f9f9f9',
+    outline: 'none'
+  };
+
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-      <h2>Регистрация</h2>
-      <form onSubmit={formik.handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        
-        <div>
-          <input 
-            type="text" 
-            name="username" 
-            placeholder="Потребителско име" 
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            style={{ padding: '10px', fontSize: '16px', width: '100%', boxSizing: 'border-box' }}
-          />
-          {formik.touched.username && formik.errors.username ? (
-            <div style={{ color: 'red', fontSize: '14px', marginTop: '5px' }}>{formik.errors.username}</div>
-          ) : null}
-        </div>
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      flex: 1,
+      fontFamily: "'Segoe UI', Roboto, sans-serif"
+    }}>
+      <div style={{ 
+        maxWidth: '450px', 
+        width: '100%', 
+        padding: '50px', 
+        backgroundColor: '#ffffff',
+        borderRadius: '30px', 
+        boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
+        textAlign: 'center'
+      }}>
+        <h2 style={{ fontSize: '2.2rem', color: '#2d3436', marginBottom: '10px', marginTop: '0' }}>Регистрация</h2>
+        <p style={{ color: '#b2bec3', marginBottom: '30px' }}>Присъединете се към нашата общност</p>
 
-        <div>
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Имейл" 
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            style={{ padding: '10px', fontSize: '16px', width: '100%', boxSizing: 'border-box' }}
-          />
-          {formik.touched.email && formik.errors.email ? (
-            <div style={{ color: 'red', fontSize: '14px', marginTop: '5px' }}>{formik.errors.email}</div>
-          ) : null}
-        </div>
+        <form onSubmit={formik.handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <input 
+              type="text" 
+              name="username" 
+              placeholder="Потребителско име" 
+              {...formik.getFieldProps('username')}
+              style={inputStyle}
+            />
+            {formik.touched.username && formik.errors.username ? (
+              <div style={{ color: '#ff6b6b', fontSize: '13px', marginTop: '8px', textAlign: 'left', paddingLeft: '10px' }}>{formik.errors.username}</div>
+            ) : null}
+          </div>
 
-        <div>
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Парола" 
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            style={{ padding: '10px', fontSize: '16px', width: '100%', boxSizing: 'border-box' }}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div style={{ color: 'red', fontSize: '14px', marginTop: '5px' }}>{formik.errors.password}</div>
-          ) : null}
-        </div>
+          <div>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Имейл адрес" 
+              {...formik.getFieldProps('email')}
+              style={inputStyle}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div style={{ color: '#ff6b6b', fontSize: '13px', marginTop: '8px', textAlign: 'left', paddingLeft: '10px' }}>{formik.errors.email}</div>
+            ) : null}
+          </div>
 
-        <button 
-          type="submit" 
-          disabled={!formik.isValid || !formik.dirty} 
-          style={{ 
-            padding: '10px', 
-            backgroundColor: (!formik.isValid || !formik.dirty) ? '#ccc' : '#333', 
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '5px', 
-            cursor: (!formik.isValid || !formik.dirty) ? 'not-allowed' : 'pointer', 
-            fontSize: '16px' 
-          }}
-        >
-          Регистрирай ме
-        </button>
-      </form>
+          <div>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Парола" 
+              {...formik.getFieldProps('password')}
+              style={inputStyle}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <div style={{ color: '#ff6b6b', fontSize: '13px', marginTop: '8px', textAlign: 'left', paddingLeft: '10px' }}>{formik.errors.password}</div>
+            ) : null}
+          </div>
+
+          <button 
+            type="submit" 
+            disabled={!formik.isValid || !formik.dirty} 
+            style={{ 
+              padding: '15px', 
+              backgroundColor: (!formik.isValid || !formik.dirty) ? '#dfe6e9' : '#2d3436', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '15px', 
+              cursor: (!formik.isValid || !formik.dirty) ? 'not-allowed' : 'pointer', 
+              fontSize: '16px',
+              fontWeight: '600',
+              boxShadow: (!formik.isValid || !formik.dirty) ? 'none' : '0 10px 20px rgba(0,0,0,0.1)',
+              marginTop: '10px'
+            }}
+          >
+            Създай профил
+          </button>
+        </form>
+
+        <p style={{ marginTop: '25px', color: '#636e72', fontSize: '14px' }}>
+          Вече имате профил? <Link to="/login" style={{ color: '#ff6b6b', fontWeight: 'bold', textDecoration: 'none' }}>Влезте тук</Link>
+        </p>
+      </div>
     </div>
   );
 }
