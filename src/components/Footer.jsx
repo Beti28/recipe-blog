@@ -1,14 +1,18 @@
 function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer style={{ 
-      textAlign: 'center', 
-      padding: '20px', 
-      marginTop: '50px', 
-      backgroundColor: '#f8f9fa', 
+    <footer style={{
+      textAlign: 'center',
+      padding: '20px',
+      marginTop: '50px',
+      backgroundColor: '#f8f9fa',
       borderTop: '1px solid #ddd',
-      color: '#555'
+      color: '#555',
+      marginTop: 'auto',
+      padding: '20px',
+      textAlign: 'center'
+
     }}>
       <p style={{ margin: 0 }}>
         © {currentYear} Recipe Blog.

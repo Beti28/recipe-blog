@@ -17,7 +17,7 @@ function Login() {
         .then(users => {
           if (users.length > 0) {
             localStorage.setItem('user', JSON.stringify(users[0]));
-            window.location.href = "/"; 
+            window.location.href = "/";
           } else {
             alert('Грешен имейл или парола!');
           }
@@ -37,28 +37,45 @@ function Login() {
   };
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column',
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      flex: 1, 
-      padding: '40px 20px',
-      boxSizing: 'border-box',
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      minHeight: 'calc(100vh - 170px)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
 
+      boxSizing: 'border-box',
     }}>
-      <div style={{ 
-        maxWidth: '450px', 
-        width: '100%', 
-        padding: '50px', 
-        backgroundColor: '#ffffff',
-        borderRadius: '30px', 
-        boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-        textAlign: 'center'
+
+      {/* ФОНОВ СЛОЙ */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("/img/login-bg.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}></div>
+
+      {/* КАРТА С ФОРМАТА */}
+      <div style={{
+        maxWidth: '450px',
+        width: '100%',
+        padding: '50px',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        borderRadius: '30px',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
+        textAlign: 'center',
+        backdropFilter: 'blur(8px)',
       }}>
         <h2 style={{ fontSize: '2.2rem', color: '#2d3436', marginBottom: '10px', marginTop: '0' }}>Вход</h2>
-        <p style={{ color: '#b2bec3', marginBottom: '30px' }}>Добре дошли отново!</p>
-        
+        <p style={{ color: '#636e72', marginBottom: '30px' }}>Добре дошли отново!</p>
+
         <form onSubmit={formik.handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
             <input type="email" name="email" placeholder="Имейл адрес" {...formik.getFieldProps('email')} style={inputStyle} />
@@ -74,17 +91,18 @@ function Login() {
             )}
           </div>
 
-          <button type="submit" style={{ 
-            padding: '15px', 
-            backgroundColor: '#2d3436', 
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '15px', 
-            cursor: 'pointer', 
+          <button type="submit" style={{
+            padding: '15px',
+            backgroundColor: '#2d3436',
+            color: 'white',
+            border: 'none',
+            borderRadius: '15px',
+            cursor: 'pointer',
             fontSize: '16px',
             fontWeight: '600',
             boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
-            marginTop: '10px'
+            marginTop: '10px',
+            transition: 'transform 0.2s ease'
           }}>
             Влез в профила
           </button>

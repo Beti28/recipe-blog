@@ -39,25 +39,42 @@ function RecipeDetails() {
 
   return (
     <div style={{ 
+      position: 'relative', 
       display: 'flex', 
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '20px', 
+      minHeight: 'calc(100vh - 170px)', 
       boxSizing: 'border-box',
       fontFamily: "'Segoe UI', Roboto, sans-serif"
     }}>
       
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1, 
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("/img/details-bg.png")',
+        
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}></div>
+
       <div style={{ 
         maxWidth: '900px', 
         width: '100%',
-        backgroundColor: '#fffdfa',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
         borderRadius: '30px', 
-        boxShadow: '0 20px 40px rgba(0,0,0,0.05)', 
+        boxShadow: '0 20px 40px rgba(0,0,0,0.1)', 
         padding: '40px',
-        border: '1px solid #f2e9e1',
         marginTop: '20px', 
-        marginBottom: '20px'
+        marginBottom: '20px',
+        backdropFilter: 'blur(5px)',
+        zIndex: 1 
       }}>
         
         <div style={{ textAlign: 'left', marginBottom: '25px' }}>
@@ -85,7 +102,6 @@ function RecipeDetails() {
               boxShadow: '0 10px 20px rgba(0,0,0,0.08)'
             }}
           />
-
 
           <div style={{ 
             display: 'flex', 

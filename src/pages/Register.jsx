@@ -49,23 +49,43 @@ function Register() {
 
   return (
     <div style={{ 
+      position: 'relative',
       display: 'flex', 
+      flexDirection: 'column',
       justifyContent: 'center', 
       alignItems: 'center', 
-      flex: 1,
-      fontFamily: "'Segoe UI', Roboto, sans-serif"
+      minHeight: 'calc(100vh - 170px)',
+      padding: '40px 20px',
+      boxSizing: 'border-box',
     }}>
+      
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("/img/register-bg.png")',
+        
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}></div>
+
       <div style={{ 
         maxWidth: '450px', 
         width: '100%', 
         padding: '50px', 
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
         borderRadius: '30px', 
-        boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-        textAlign: 'center'
+        boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+        textAlign: 'center',
+        backdropFilter: 'blur(5px)',
+        zIndex: 1,
       }}>
         <h2 style={{ fontSize: '2.2rem', color: '#2d3436', marginBottom: '10px', marginTop: '0' }}>Регистрация</h2>
-        <p style={{ color: '#b2bec3', marginBottom: '30px' }}>Присъединете се към нашата общност</p>
+        <p style={{ color: '#636e72', marginBottom: '30px' }}>Присъединете се към нашата общност</p>
 
         <form onSubmit={formik.handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
@@ -120,7 +140,8 @@ function Register() {
               fontSize: '16px',
               fontWeight: '600',
               boxShadow: (!formik.isValid || !formik.dirty) ? 'none' : '0 10px 20px rgba(0,0,0,0.1)',
-              marginTop: '10px'
+              marginTop: '10px',
+              transition: 'all 0.3s ease'
             }}
           >
             Създай профил
