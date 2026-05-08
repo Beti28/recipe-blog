@@ -48,7 +48,6 @@ function Login() {
       boxSizing: 'border-box',
     }}>
 
-      {/* ФОНОВ СЛОЙ */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -62,7 +61,6 @@ function Login() {
         backgroundRepeat: 'no-repeat'
       }}></div>
 
-      {/* КАРТА С ФОРМАТА */}
       <div style={{
         maxWidth: '450px',
         width: '100%',
