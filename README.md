@@ -19,7 +19,7 @@
 
 ### 1. Клонирайте хранилището
 ```bash
-git clone <линк-към-твоето-repo>
+git clone https://github.com/Beti28/recipe-blog
 cd recipe-blog
 ```
 
