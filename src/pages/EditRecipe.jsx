@@ -53,7 +53,6 @@ function EditRecipe() {
 
     }}>
       
-      {/* ФОНОВ СЛОЙ */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -61,14 +60,12 @@ function EditRecipe() {
         width: '100%',
         height: '100%',
         zIndex: -1,
-        // Използваме името edit-bg.png
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("/img/edit-bg.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}></div>
 
-      {/* КАРТА С ФОРМАТА */}
       <div style={{ 
         maxWidth: '500px', 
         width: '100%', 
