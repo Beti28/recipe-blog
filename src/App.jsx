@@ -7,6 +7,7 @@ import RecipeDetails from './pages/RecipeDetails';
 import AddRecipe from './pages/AddRecipe';
 import Footer from './components/Footer';
 import EditRecipe from './pages/EditRecipe';
+import ProtectedRoute from "./components/ProtectedRoute";
 import './App.css';
 
 function App() {
@@ -15,20 +16,28 @@ function App() {
       <div className="App">
         <Navbar />
         <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-          <Route path="/add-recipe" element={<AddRecipe />} />
-          <Route path="/edit/:id" element={<EditRecipe />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/recipes/:id" element={<RecipeDetails />} />
+            <Route path="/add-recipe" element={
+              <ProtectedRoute>
+                <AddRecipe />
+              </ProtectedRoute>
+            } />
+            <Route path="/edit/:id" element={
+              <ProtectedRoute>
+                <EditRecipe />
+              </ProtectedRoute>
+            } />
+          </Routes>
         </main>
         <Footer />
       </div>
-      
+
     </Router>
-    
+
   );
 }
 
